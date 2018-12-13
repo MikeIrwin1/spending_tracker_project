@@ -1,8 +1,8 @@
 require( 'minitest/autorun' )
 require( 'minitest/rg' )
 require_relative( '../transaction' )
-require_relative( '../tag')
-require_relative( '../merchant')
+require_relative( '../tag' )
+require_relative( '../merchant' )
 
 class TransactionTest < MiniTest::Test
 
