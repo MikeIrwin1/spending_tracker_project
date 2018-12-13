@@ -26,7 +26,4 @@ class TransactionTest < MiniTest::Test
     assert_equal(25, @transaction.spend)
   end
 
-
-
-
 end
