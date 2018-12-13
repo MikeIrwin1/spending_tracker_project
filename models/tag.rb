@@ -1,5 +1,11 @@
 require('pry')
 
-class Tag()
+class Tag
+
+  attr_reader :name
+
+  def initialize(options)
+    @name = options['name']
+  end
 
 end

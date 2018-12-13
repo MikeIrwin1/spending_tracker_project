@@ -1,5 +1,7 @@
 require( 'pry' )
 
-class Transaction()
+class Transaction
+
+
 
 end
