@@ -7,7 +7,7 @@ require_relative( '../merchant')
 class TransactionTest < MiniTest::Test
 
   def setup
-    @transaction = Transaction.new({'id' => 1, 'merchant_id' => 1, 'tag_id' => 1})
+    @transaction = Transaction.new({'id' => 1, 'merchant_id' => 1, 'tag_id' => 1, 'spend' => 25})
   end
 
   def test_transaction_has_id
@@ -21,6 +21,11 @@ class TransactionTest < MiniTest::Test
   def test_transaction_has_tag_id
     assert_equal(1, @transaction.tag_id)
   end
+
+  def test_transaction_has_spend
+    assert_equal(25, @transaction.spend)
+  end
+
 
 
 
