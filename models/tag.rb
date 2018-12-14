@@ -47,5 +47,13 @@ class Tag
     SqlRunner.run(sqls, values)
   end
 
+  def merchants()
+    sql = "SELECT merchants.* FROM
+    merchants INNER JOIN transactions
+    ON merchants.id = transactions.merchant_id
+    WHERE transactions.tag_id = $1"
+    values = [@id]
+  end
+
 
 end
