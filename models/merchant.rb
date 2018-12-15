@@ -59,4 +59,11 @@ class Merchant
     tags = SqlRunner.run(sql, values)
     return tags.map{|tag| Tag.new(tag)}
   end
+
+  def transactions()
+    sql = "SELECT * FROM transactions WHERE id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map {|transaction| Transaction.new(transaction)}
+  end
 end

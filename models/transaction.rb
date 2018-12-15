@@ -52,6 +52,26 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
+  def merchant()
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [@merchant_id]
+    result = SqlRunner.run(sql, values).first
+    return Merchant.new(result)
+  end
+
+  def tag()
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [@tag_id]
+    result = SqlRunner.run(sql, values).first
+    return Tag.new(result)
+  end
+
+  def time()
+    sql = "SELECT transactions.transaction_time FROM transactions WHERE id = $1"
+    values = [@id]
+    return SqlRunner.run(sql, values).first['transaction_time'][0..18]
+  end
+
 # This sql replaces the merchant_id and tag_id with the names for display purposes
 # unsure how or if to use this yet.
 
