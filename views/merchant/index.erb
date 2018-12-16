@@ -1,1 +1,23 @@
-<h1> TEST TEST TEST </h1>
+<h2>Merchants</h2>
+
+<p><a href="/merchants/new">New Merchant</a></p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+  </tr>
+  <% for merchant in @merchants %>
+    <tr>
+      <td><%= merchant.name %></td>
+      <td><%= merchant.catagory %></td>
+      <td>
+        <form action="/merchants/<%= merchant.id %>/edit" method= "get">
+        <input type="submit" value="Edit">
+        </form>
+        <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+        <input type="submit" value="Delete">
+        </form>
+    </tr>
+  <% end %>
+</table>
