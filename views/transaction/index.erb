@@ -1,1 +1,28 @@
 <h2>Transactions</h2>
+
+<p><a href="/transactions/new">New Transaction</a></p>
+
+<table>
+  <tr>
+    <th>Merchant</th>
+    <th>Tag</th>
+    <th>Spent</th>
+    <th>Transaction Date</th>
+  </tr>
+  <% for transaction in @transactions %>
+    <tr>
+      <td><%= transaction.merchant.name %></td>
+      <td><%= transaction.tag.name %></td>
+      <td>£<%= transaction.spend %></td>
+      <td><%= transaction.transaction_time[0..18] %></td>
+    <td>
+        <form action="/transactions/<%= transaction.id %>/edit" method="get">
+        <input type="submit" name="Edit" value="Edit">
+        </form>
+        <form action="/transactions/<%=transaction.id %>/delete" method="post">
+        <input type="submit" name="Delete" value="Delete">
+        </form>
+    </td>
+    </tr>
+  <% end %>
+</table>

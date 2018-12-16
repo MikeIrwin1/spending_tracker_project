@@ -22,9 +22,9 @@ class Tag
     SqlRunner.run(sql)
   end
 
-  def delete()
+  def self.delete(id)
     sql = "DELETE FROM tags WHERE id = $1"
-    values = [@id]
+    values = [id]
     SqlRunner.run(sql, values)
   end
 
@@ -42,9 +42,9 @@ class Tag
   end
 
   def update
-    sql = "UPDATE tags SET (name) = ($1) WHERE id = $2"
+    sql = "UPDATE tags SET name=$1 WHERE id = $2"
     values = [@name, @id]
-    SqlRunner.run(sqls, values)
+    SqlRunner.run(sql, values)
   end
 
   def merchants()

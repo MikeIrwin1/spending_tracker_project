@@ -1,1 +1,22 @@
 <h1>Tags</h1>
+
+<p><a href="/tags/new">New Tag</a></p>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for tag in @tags %>
+    <tr>
+      <td><%= tag.name.capitalize %></td>
+      <td>
+        <form action="/tags/<%= tag.id %>/edit" method="get">
+        <input type="submit" name="Edit" value="Edit">
+        </form>
+        <form action="/tags/<%=tag.id %>/delete" method="post">
+        <input type="submit" name="Delete" value="Delete">
+        </form>
+    </td>
+    </tr>
+  <% end %>
+</table>
