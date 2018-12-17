@@ -7,7 +7,15 @@
     <th>Name</th>
     <th>Type</th>
   </tr>
-  <% for merchant in @merchants %>
+    <tr>
+      <td><%= @merchants.first.name %></td>
+      <td><%= @merchants.first.catagory %></td>
+      <td>
+      <form action="/merchants/<%= @merchants.first.id %>/edit" method="get">
+      <input type="submit" value="Edit">
+      </form></td>
+    </tr>
+  <% for merchant in @merchants[1..@merchants.length] %>
     <tr>
       <td><%= merchant.name %></td>
       <td><%= merchant.catagory %></td>

@@ -10,10 +10,10 @@
   <label for="tag">Tag:</label>
   <select id="tag" name="tag_id">
     <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.name %></option>
+      <option value="<%= tag.id %>"><%= tag.name.capitalize %></option>
     <% end %>
   </select>
   <label for="spend">Spent:</label>
-  <input id="spend" type="text" name="spend">
+  <input id="spend" type="text" name="spend" required="required">
   <button type="submit" name="submit">Add Transaction</button>
 </form>

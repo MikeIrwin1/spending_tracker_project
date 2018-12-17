@@ -6,7 +6,14 @@
   <tr>
     <th>Name</th>
   </tr>
-  <% for tag in @tags %>
+  <tr>
+    <% @tags.first %>
+    <td><%= @tags.first.name.capitalize%></td>
+    <td><form action="/tags/<%=@tags.first.id %>/edit" method="get">
+      <input type="submit" name="Edit" value="Edit">
+    </form></td>
+  </tr>
+  <% for tag in @tags[1..@tags.length] %>
     <tr>
       <td><%= tag.name.capitalize %></td>
       <td>
