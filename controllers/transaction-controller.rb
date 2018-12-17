@@ -6,6 +6,7 @@ also_reload('../models/*')
 # inital display
 
 get '/transactions' do
+  @budgets = Budget.all()
   @transactions = Transaction.all()
   erb(:"transaction/index")
 end
@@ -22,6 +23,7 @@ end
 get '/transactions/new' do
   @tags = Tag.all()
   @merchants = Merchant.all()
+
   erb(:"transaction/new")
 end
 
@@ -39,4 +41,10 @@ get '/transactions/:id/edit' do
   @merchants = Merchant.all()
   @transaction = Transaction.find(params[:id])
   erb(:"transaction/edit")
+end
+
+post '/transactions/:id/edit' do
+  transaction = Transaction.new(params)
+  transaction.update
+  redirect to '/transactions'
 end

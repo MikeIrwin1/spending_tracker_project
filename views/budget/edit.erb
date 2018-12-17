@@ -1,0 +1,9 @@
+<h1>**EDIT BUDGET**</h1>
+
+
+<form action="/budgets/<%= @budget.id %>/edit" method="post">
+  <label for="value-field">Enter your new budget: </label>
+  <input id="value-field"type="number" name="value" value="<%= @budget.value %>">
+
+  <input type="submit" name="submit" value="Confirm changes">
+</form>

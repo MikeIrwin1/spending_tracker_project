@@ -10,7 +10,7 @@ class Transaction
     @id = options['id'].to_i if options['id']
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
-    @spend = options['spend'].to_i
+    @spend = options['spend'].to_f
     @transaction_time = options['transaction_time']
   end
 
@@ -41,14 +41,14 @@ class Transaction
   end
 
   def self.all()
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT * FROM transactions ORDER BY transaction_time DESC"
     results = SqlRunner.run(sql)
     return results.map{|transaction| Transaction.new(transaction)}
   end
 
   def update()
-    sql = "UPDATE transactions SET (merchant_id, tag_id, spend) = ($1, $2, $3)"
-    values = [@merchant_id, @tag_id, @spend]
+    sql = "UPDATE transactions SET (merchant_id, tag_id, spend) = ($1, $2, $3) WHERE id = $4"
+    values = [@merchant_id, @tag_id, @spend, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -71,14 +71,4 @@ class Transaction
     values = [@id]
     return SqlRunner.run(sql, values).first['transaction_time'][0..18]
   end
-
-# This sql replaces the merchant_id and tag_id with the names for display purposes
-# unsure how or if to use this yet.
-
-  # "SELECT transactions.id,
-  # (SELECT merchants.name FROM merchants WHERE id = transactions.merchant_id),
-  # (SELECT tags.name FROM tags WHERE id = transactions.tag_id),
-  # transactions.spend,
-  # transactions.transaction_time
-  # FROM transactions"
 end

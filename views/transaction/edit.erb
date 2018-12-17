@@ -1,4 +1,4 @@
-<form action="/transactions" method="post">
+<form action="/transactions/<%=@transaction.id %>/edit" method="post">
   <label for="merchant">Merchant:</label>
   <select id="merchant" name="merchant_id">
     <% for merchant in @merchants %>

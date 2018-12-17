@@ -1,0 +1,16 @@
+<h1>Budget</h1>
+
+<table>
+  <tr>
+    <td>
+      <%for budget in @budgets %>
+        <p>Your current budget is: £<%= '%.2f' % budget.value %></p>
+      <% end %>
+    </td>
+    <td>
+      <form action="/budgets/<%= budget.id %>/edit" method="get">
+      <input type="submit" name="submit" value="Edit budget">
+      </form>
+    </td>
+  </tr>
+</table>
