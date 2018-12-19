@@ -4,25 +4,38 @@
 
 <table align = "center">
   <tr>
-    <th>Name</th>
+    <td>
+      <%= @merchants.first.name %>
+    </td>
+  <tr>
+    <td>
+      <form action="/merchants/<%= @merchants.first.id %>/edit" method="get">
+      <input type="image" src="/icons/edit-30.svg" value="Edit">
+      </form>
+    </td>
   </tr>
-    <tr>
-      <td><%= @merchants.first.name %></td>
-      <td>
-        <form action="/merchants/<%= @merchants.first.id %>/edit" method="get">
-          <input type="submit" value="Edit">
-      </form></td>
-    </tr>
-  <% for merchant in @merchants[1..@merchants.length] %>
-    <tr>
-      <td><%= merchant.name %></td>
-      <td>
-        <form action="/merchants/<%= merchant.id %>/edit" method= "get">
-        <input type="submit" value="Edit">
-        </form>
-        <form action="/merchants/<%= merchant.id %>/delete" method="POST">
-        <input type="submit" value="Delete">
-        </form>
-    </tr>
-  <% end %>
 </table>
+
+<% for merchant in @merchants[1..@merchants.length] %>
+  <table align = "center">
+    <tr>
+      <td>
+        <%= merchant.name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="first_half">
+          <form action="/merchants/<%= merchant.id %>/edit" method= "get">
+          <input type="image" src="/icons/edit-30.svg" value="Edit">
+          </form>
+        </div>
+        <div class="second_half">
+          <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+          <input type="image" src="/icons/trash-can.svg" value="Delete">
+          </form>
+        </div>
+
+    </tr>
+  </table>
+<% end %>

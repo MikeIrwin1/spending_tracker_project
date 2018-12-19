@@ -1,29 +1,38 @@
 <h1>Tags</h1>
 
 <p><a href="/tags/new">New Tag</a></p>
-
-<table align="center">
-  <tr>
-    <th>Name</th>
-  </tr>
+<table align = "center">
   <tr>
     <% @tags.first %>
     <td><%= @tags.first.name.capitalize%></td>
+  </tr>
+  <tr>
     <td><form action="/tags/<%=@tags.first.id %>/edit" method="get">
-      <input type="submit" name="Edit" value="Edit">
+      <input type="image" src="/icons/edit-30.svg" name="Edit" value="Edit">
     </form></td>
   </tr>
-  <% for tag in @tags[1..@tags.length] %>
-    <tr>
-      <td><%= tag.name.capitalize %></td>
-      <td>
-        <form action="/tags/<%= tag.id %>/edit" method="get">
-        <input type="submit" name="Edit" value="Edit">
-        </form>
-        <form action="/tags/<%=tag.id %>/delete" method="post">
-        <input type="submit" name="Delete" value="Delete">
-        </form>
-    </td>
-    </tr>
-  <% end %>
 </table>
+
+<% for tag in @tags[1..@tags.length] %>
+  <table align="center">
+    <tr>
+      <td>
+        <%= tag.name.capitalize %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="first_half">
+          <form action="/tags/<%= tag.id %>/edit" method="get">
+          <input type="image" src="/icons/edit-30.svg" name="Edit" value="Edit">
+          </form>
+        </div>
+        <div class="second_half">
+          <form action="/tags/<%=tag.id %>/delete" method="post">
+          <input type="image" src="/icons/trash-can.svg" name="Delete" value="Delete">
+          </form>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>
