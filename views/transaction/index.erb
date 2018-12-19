@@ -1,46 +1,45 @@
-<h2>Transactions</h2>
+<h1>Transactions</h2>
 
-<p><a href="/transactions/new">New Transaction</a></p>
+
 <% @totalspend = 0 %>
 <% for transaction in @transactions %>
   <% @totalspend += transaction.spend %>
 <% end %>
 
+<p>Your total spend so far is: £<%= '%.2f' % @totalspend %></p>
+
 <% if @totalspend <= @budgets.first.value.to_f*0.8 %>
-  <h1>You have <font color = "green">£<%= '%.2f' % (@budgets.first.value.to_f - @totalspend) %></font> remaining</h1>
+  <h2>You have <font color = "green">£<%= '%.2f' % (@budgets.first.value.to_f - @totalspend) %></font> remaining of your £<%= @budgets.first.value %> budget</h1>
 <% else %>
-  <h1>You have <font color = "red">£<%= '%.2f' % (@budgets.first.value.to_f - @totalspend) %></font> remaining</h1>
+  <h1>You have <font color = "red">£<%= '%.2f' % (@budgets.first.value.to_f - @totalspend) %></font> remaining of your £<%= @budgets.first.value %> budget</h1>
 <% end %>
 
-<table>
-  <tr>
-    <th>Merchant</th>
-    <th>Tag</th>
-    <th>Spent</th>
-    <th>Percentage</th>
-    <th>Transaction Date</th>
-    <th>Transaction Time</th>
-  </tr>
+<p><a href="/transactions/new">New Transaction</a></p>
 
   <% for transaction in @transactions %>
-    <tr>
-      <td><%= transaction.merchant.name %></td>
-      <td><%= transaction.tag.name.capitalize %></td>
-      <td>£<%= '%.2f' % transaction.spend %></td>
-      <td><%= '%.1f' % ((transaction.spend / @totalspend)*100) %>%</td>
-      <td><%= transaction.transaction_time[0..9] %></td>
-      <td><%= transaction.transaction_time[10..15] %></td>
-      <td>
-          <form action="/transactions/<%= transaction.id %>/edit" method="get">
-          <input type="submit" name="Edit" value="Edit">
-          </form>
-          <form action="/transactions/<%=transaction.id %>/delete" method="post">
-          <input type="submit" name="Delete" value="Delete">
-          </form>
-      </td>
-    </tr>
+  <table align="center">
+      <tr>
+        <td>Merchant: <%= transaction.merchant.name %></td>
+        <td>Tag: <%= transaction.tag.name.capitalize %></td>
+        <td>Spend: £<%= '%.2f' % transaction.spend %></td>
+      <tr>
+        <td>Percentage: <%= '%.1f' % ((transaction.spend / @totalspend)*100) %>%</td>
+        <td>Date: <%= transaction.transaction_time[0..9] %></td>
+        <td>Time: <%= transaction.transaction_time[10..15] %></td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div class="first_half">
+            <form action="/transactions/<%= transaction.id %>/edit" method="get">
+            <input type="image" src="/icons/edit-30.svg" name="Edit" value="Edit">
+            </form>
+          </div>
+          <div class="second_half">
+            <form action="/transactions/<%=transaction.id %>/delete" method="post">
+            <input type="image" src="/icons/trash-can.svg" name="Delete" value="Delete">
+            </form>
+          </div>
+        </td>
+      </tr>
+    </table>
   <% end %>
-  <tr>
-    <td>Total: £<%= '%.2f' % @totalspend %></td>
-  </tr>
-</table>

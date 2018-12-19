@@ -1,1 +1,10 @@
 <h1>Budget Builder</h1>
+
+<% @totalspend = 0 %>
+<% for transaction in @transactions %>
+  <% @totalspend += transaction.spend %>
+<% end %>
+
+<h2>Your remaining budget is £<%= '%.2f' % (@budget.value.to_f - @totalspend) %> </h2>
+
+<p><a href="/transactions/new">New Transaction</a></p>

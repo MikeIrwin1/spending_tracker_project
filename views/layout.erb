@@ -2,19 +2,27 @@
 <html>
 <head>
   <title>Spending Tracker</title>
+  <link rel="stylesheet" href="\style.css">
 </head>
 <body>
-  <h1> Budget Builder </h1>
-  <nav>
-    <ul>
-      <li><a href="/transactions">Transactions</a></li>
-      <li><a href="/merchants">Merchants</a></li>
-      <li><a href="/tags">Tags</a></li>
-      <li><a href="/budgets">Budgets</a></li>
-    </ul>
-  </nav>
-  <div id="main_content">
-    <%= yield %>
+  <div class="page">
+    <div class="header">
+      <h1><a href="/">Budget Builder </a></h1>
+    </div>
+    <div class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="/transactions">Transactions</a></li>
+          <li><a href="/merchants">Merchants</a></li>
+          <li><a href="/tags">Tags</a></li>
+          <li><a href="/budgets">Budgets</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
   </div>
 </body>
+
 </html>

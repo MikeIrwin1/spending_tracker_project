@@ -9,14 +9,14 @@ Merchant.delete_all
 Tag.delete_all
 Budget.delete_all
 
-merchant1 = Merchant.new({'name' => 'Tesco', 'catagory' => 'Supermarket'})
-merchant2 = Merchant.new({'name' => 'Amazon', 'catagory' => 'Online Retailer'})
-merchant3 = Merchant.new({'name' => 'Netflix', 'catagory' => 'TV'})
-merchant4 = Merchant.new({'name' => 'British Gas', 'catagory' => 'Utility'})
-merchant5 = Merchant.new({'name' => 'Virgin Media', 'catagory' => 'Subscription'})
-merchant6 = Merchant.new({'name' => 'Nandos', 'catagory' => 'Restaurant'})
-merchant7 = Merchant.new({'name' => 'Giffgaff', 'catagory' => 'Subscription'})
-merchant8 = Merchant.new({'name' => 'BP', 'catagory' => 'Fuel'})
+merchant1 = Merchant.new({'name' => 'Tesco'})
+merchant2 = Merchant.new({'name' => 'Amazon'})
+merchant3 = Merchant.new({'name' => 'Netflix'})
+merchant4 = Merchant.new({'name' => 'British Gas'})
+merchant5 = Merchant.new({'name' => 'Virgin Media'})
+merchant6 = Merchant.new({'name' => 'Nandos'})
+merchant7 = Merchant.new({'name' => 'Giffgaff'})
+merchant8 = Merchant.new({'name' => 'BP'})
 merchant1.save()
 merchant2.save()
 merchant3.save()

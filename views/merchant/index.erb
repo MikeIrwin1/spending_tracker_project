@@ -1,24 +1,21 @@
-<h2>Merchants</h2>
+<h1>Merchants</h1>
 
 <p><a href="/merchants/new">New Merchant</a></p>
 
-<table>
+<table align = "center">
   <tr>
     <th>Name</th>
-    <th>Type</th>
   </tr>
     <tr>
       <td><%= @merchants.first.name %></td>
-      <td><%= @merchants.first.catagory %></td>
       <td>
-      <form action="/merchants/<%= @merchants.first.id %>/edit" method="get">
-      <input type="submit" value="Edit">
+        <form action="/merchants/<%= @merchants.first.id %>/edit" method="get">
+          <input type="submit" value="Edit">
       </form></td>
     </tr>
   <% for merchant in @merchants[1..@merchants.length] %>
     <tr>
       <td><%= merchant.name %></td>
-      <td><%= merchant.catagory %></td>
       <td>
         <form action="/merchants/<%= merchant.id %>/edit" method= "get">
         <input type="submit" value="Edit">
