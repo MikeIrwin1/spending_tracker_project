@@ -47,6 +47,12 @@ Run the app
 ruby app.rb
 ```
 
+Head to your favourite browser and view the page
+
+```
+localhost:4567
+```
+
 ## Built With
 
 * [Ruby](https://www.ruby-lang.org/en/)
